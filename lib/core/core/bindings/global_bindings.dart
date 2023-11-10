@@ -5,7 +5,7 @@ import 'package:flutter_getx_template/data/respository/repository_impl.dart';
 import 'package:flutter_getx_template/data/storage.dart';
 import 'package:get/get.dart';
 
-class GlobalBindings extends BindingsInterface {
+class GlobalBindings extends Bindings {
   @override
   void dependencies() async {
     Get.put<NetworkCore>(NetworkCore(), permanent: true);

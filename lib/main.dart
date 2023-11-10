@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_template/app.dart';
+import 'package:flutter_getx_template/core/core/bindings/global_bindings.dart';
 
 void main() {
+  GlobalBindings().dependencies();
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Material(
       child: Container(

@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_template/core/core/utils/custom_exception.dart';
 import 'package:flutter_getx_template/data/model/user_model.dart';
 import 'package:flutter_getx_template/data/network.dart';
 import 'package:flutter_getx_template/data/persistence.dart';
 import 'package:flutter_getx_template/data/respository/repository.dart';
+import 'package:get/get.dart';
 
 class RepositoryImpl implements Repository {
   RepositoryImpl({required this.networkCore, required this.persistenceCore});
@@ -18,24 +17,19 @@ class RepositoryImpl implements Repository {
   FutureOr<UserModel?> getUser(int page) async {
     late Response? response;
     try {
-      response = await networkCore.get("/users",
-          options: networkCore.reqResBaseUrl(),
+      response = await networkCore.getRequest<UserModel>("/users",
           queryParameters: {
-            "page": page
+            "page": page.toString()
           },
-          // body: {
-          //   "username": username,
-          //   "password": password,
-          //   "device_id": fcmToken
-          // },
+          decoder: (val) => UserModel.fromJson(val),
           headers: {
             'Accept': 'application/json',
             'Content-Type': "application/json"
           });
-    } on CustomException catch (e) {
-      debugPrint(e.message);
-      return UserModel();
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      rethrow;
     }
-    return UserModel.fromJson(response?.data);
+    return response?.body;
   }
 }
