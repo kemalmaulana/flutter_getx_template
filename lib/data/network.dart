@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_getx_template/core/core/alice/alice_get_connect.dart';
 import 'package:flutter_getx_template/core/core/constant/app_constant.dart';
 import 'package:flutter_getx_template/data/storage.dart';
 import 'package:get/get.dart';
@@ -11,12 +12,15 @@ class NetworkCore extends GetConnect {
   static bool isNeedToken(String route) => !noNeedToken.contains(route);
 
   final storage = StorageCore();
+  final alice = Get.find<AliceGetConnect>();
 
   @override
   void onInit() {
     httpClient.baseUrl = AppConstant.BASE_URL;
     httpClient.defaultContentType = "application/json";
-    httpClient.timeout = const Duration(seconds: 30);
+    httpClient.timeout = alice.timeout;
+    httpClient.addRequestModifier(alice.requestInterceptor);
+    httpClient.addResponseModifier(alice.responseInterceptor);
     super.onInit();
   }
 
