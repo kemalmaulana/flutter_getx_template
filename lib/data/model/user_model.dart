@@ -169,5 +169,4 @@ Data copyWith({  num? id,
     map['avatar'] = _avatar;
     return map;
   }
-
 }

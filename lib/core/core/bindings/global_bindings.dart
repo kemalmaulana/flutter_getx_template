@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_template/core/core/alice/alice_get_connect.dart';
 import 'package:flutter_getx_template/data/network.dart';
-import 'package:flutter_getx_template/data/persistence.dart';
 import 'package:flutter_getx_template/data/respository/repository.dart';
 import 'package:flutter_getx_template/data/respository/repository_impl.dart';
 import 'package:flutter_getx_template/data/storage.dart';
@@ -19,11 +18,9 @@ class GlobalBindings extends Bindings {
         permanent: true);
     Get.put<NetworkCore>(NetworkCore(), permanent: true);
     Get.put<StorageCore>(StorageCore(), permanent: true);
-    Get.put<PersistenceCore>(PersistenceCore(), permanent: true);
     Get.put<Repository>(
         RepositoryImpl(
-            networkCore: Get.find<NetworkCore>(),
-            persistenceCore: Get.find<PersistenceCore>()),
+            networkCore: Get.find<NetworkCore>()),
         permanent: true);
   }
 }

@@ -1,0 +1,55 @@
+name: Template Android Release
+
+on:
+  push:
+    #    branches: [ main ]
+    tags:
+      - '*'
+jobs:
+  version:
+    name: Fetching Repo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Fetch all history for all tags and branches
+        run: |
+          git fetch --prune --tags
+  build:
+    name: Build APK and Create release
+    needs: [ version ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Setup Java
+        uses: actions/setup-java@v4.1.0
+        with:
+          distribution: 'temurin'
+          java-version: '17.0'
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3.2.0
+      - name: Setup Flutter SDK Latest
+        uses: subosito/flutter-action@v2.9.1
+        with:
+          channel: 'stable'
+          #          flutter-version: '3.19.1'
+          cache: true
+          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:' # optional, change this to force refresh cache
+          architecture: x64
+      - name: Flutter Get Version
+        run: flutter --version
+      - name: Flutter Get Dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: flutter build apk -v
+      - name: Create a Release in Github
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+          token: ${{ secrets.GH_TOKEN }}
+          tag: ${{ steps.version.outputs.content }}
+          commit: ${{ github.sha }}
+      - name: Upload apk to Github Release
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: apks
+          path: build/app/outputs/flutter-apk/app-release.apk
