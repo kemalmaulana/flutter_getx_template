@@ -6,5 +6,5 @@ import 'package:get/get_connect/http/src/request/request.dart';
 abstract class BaseInterceptor<T> {
   FutureOr<Request<T>> requestInterceptor(Request<T?> request);
 
-  FutureOr responseInterceptor(Request<T?> request, Response<T?> response);
+  FutureOr<dynamic> responseInterceptor(Request<T?> request, Response<T?> response);
 }

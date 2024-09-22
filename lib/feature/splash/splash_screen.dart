@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_template/feature/splash/splash_controller.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
       init: SplashController(),
       builder: (controller) => Scaffold(
         appBar: AppBar(
-          title: const Text("Test"),
+          title: const Text('Test'),
         ),
         body: Obx(() => Visibility(
           visible: controller.userModel.value.isNotEmpty,
@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
                 itemBuilder: (_, index) {
                   var item = controller.userModel.value[index];
                   return ListTile(
-                    title: Text(item.email ?? "test"),
+                    title: Text(item.email ?? 'test'),
                   );
                 },
               ),

@@ -8,10 +8,10 @@ class SplashController extends BaseController {
   RxList<Data> userModel = RxList();
 
   @override
-  void onInit() async {
-    var response = await repository.getUser(1) ?? UserModel();
+  Future<void> onInit() async {
+    final response = await repository.getUser(1) ?? UserModel();
     userModel.value = response.data ?? [];
-    debugPrint("UserModel: ${response.toJson().toString()}");
+    debugPrint('UserModel: ${response.toJson()}');
     update();
     super.onInit();
   }

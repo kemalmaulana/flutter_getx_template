@@ -11,7 +11,7 @@ class GlobalBindings extends Bindings {
   final _navKey = GlobalKey<NavigatorState>();
 
   @override
-  void dependencies() async {
+  Future<void> dependencies() async {
     Get.put<AliceGetConnect>(
         AliceGetConnect(
             timeout: const Duration(seconds: 60), navigatorKey: _navKey),

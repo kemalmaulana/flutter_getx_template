@@ -6,52 +6,52 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=3.5.1 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_staggered_animations: ^1.1.1
-  flutter_map: ^6.1.0
   flutter_easyloading: ^3.0.5
-  flutter_svg: ^2.0.10+1
   flutter_html: any
-  flutter_launcher_icons: ^0.13.1
-  flutter_local_notifications: ^17.1.2
+  flutter_staggered_animations: ^1.1.1
+  flutter_svg: ^2.0.10+1
+  flutter_launcher_icons: ^0.14.0
+  flutter_local_notifications: ^17.2.3
   flutter_rating_bar: ^4.0.1
-  flutter_native_splash: ^2.4.0
+  flutter_map: ^7.0.2
+  flutter_native_splash: ^2.4.1
   flutter_inappwebview: ^6.0.0
-  flutter_screenutil: ^5.9.1
-  firebase_core: ^2.31.0
-  firebase_messaging: ^14.9.2
-  firebase_crashlytics: ^3.5.5
-  connectivity_plus: ^6.0.3
-  path_provider_android: ^2.2.4
+  flutter_screenutil: ^5.9.3
+  firebase_core: ^3.5.0
+  firebase_messaging: ^15.1.2
+  firebase_crashlytics: ^4.1.2
+  connectivity_plus: ^6.0.5
+  path_provider_android: ^2.2.10
   path_provider_ios: ^2.0.11
-  carousel_slider: ^4.2.1
-  webview_flutter: ^4.7.0
-  geolocator: ^11.1.0
+  carousel_slider: ^5.0.0
+  webview_flutter: ^4.9.0
+  geolocator: ^13.0.1
   latlong2: ^0.9.1
   maps_toolkit: ^3.0.0
   intl: ^0.19.0
   get_storage: ^2.1.1
-  url_launcher: ^6.2.6
+  url_launcher: ^6.3.0
   fimber: ^0.7.0
   google_fonts: ^6.2.1
   dropdown_button2: ^2.3.9
   mask_text_input_formatter: ^2.9.0
 #  camera: ^0.10.5+9
-  octo_image: ^2.0.0
-  upgrader: ^10.3.0
+  octo_image: ^2.1.0
+  upgrader: ^11.1.0
   path: any
   infinite_scroll_pagination: ^4.0.0
   permission_handler: any
-  google_mlkit_face_detection: ^0.11.0
+  google_mlkit_face_detection: ^0.11.1
   percent_indicator: ^4.2.3
   timezone: any
   shimmer: ^3.0.0
-  file_picker: ^8.0.3
-  image_picker: ^1.1.1
+  file_picker: ^8.1.2
+  image_picker: ^1.1.2
   overlay_support: ^2.1.0
   flutter_alice: ^1.1.1
 #  syncfusion_flutter_pdfviewer: ^25.1.35
@@ -67,7 +67,7 @@ dependencies:
 #  overlay_support: any
 #  safe_device: ^1.1.2
 #  basic_utils: ^5.5.4
-  cached_network_image: ^3.3.1
+  cached_network_image: ^3.4.1
 
 dependency_overrides:
   flutter_alice:
@@ -75,9 +75,9 @@ dependency_overrides:
       url: https://github.com/kemalmaulana/flutter-alice.git
 
 dev_dependencies:
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
 
 flutter_icons:
   android: "launcher_icon"

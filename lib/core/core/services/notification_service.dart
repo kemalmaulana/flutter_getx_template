@@ -53,7 +53,7 @@ class NotificationService {
       const NotificationDetails(
         // Android details
         android: AndroidNotificationDetails('schedule_absen', 'Absence Channel',
-            channelDescription: "schedule_absen",
+            channelDescription: 'schedule_absen',
             importance: Importance.max,
             priority: Priority.max),
         // iOS details

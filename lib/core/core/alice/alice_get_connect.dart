@@ -13,7 +13,7 @@ import 'package:flutter_getx_template/core/core/alice/base_interceptor.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
-class AliceGetConnect implements BaseInterceptor {
+class AliceGetConnect implements BaseInterceptor<dynamic> {
   /// Should user be notified with notification if there's new request catched
   /// by Alice
   final bool showNotification;
@@ -39,7 +39,7 @@ class AliceGetConnect implements BaseInterceptor {
     this.showNotification = true,
     this.showInspectorOnShake = false,
     this.darkTheme = false,
-    this.notificationIcon = "@mipmap/ic_launcher",
+    this.notificationIcon = '@mipmap/ic_launcher',
     this.timeout = const Duration(seconds: 30),
   }) {
     _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
@@ -63,17 +63,17 @@ class AliceGetConnect implements BaseInterceptor {
   }
 
   @override
-  FutureOr<Request> requestInterceptor(Request request) async {
+  FutureOr<Request<dynamic>> requestInterceptor(Request<dynamic> request) async {
     request.headers['date'] = DateTime.now().toString();
-    AliceHttpCall call = AliceHttpCall(request.id);
+    final AliceHttpCall call = AliceHttpCall(request.id);
     call.method = request.method;
     call.endpoint = request.url.path;
     call.server = request.url.host;
-    call.client = "Get Connect";
-    if (request.url.scheme.contains("https")) {
+    call.client = 'Get Connect';
+    if (request.url.scheme.contains('https')) {
       call.secure = true;
     }
-    AliceHttpRequest aliceHttpRequest = AliceHttpRequest();
+    final AliceHttpRequest aliceHttpRequest = AliceHttpRequest();
 
     aliceHttpRequest.size = request.contentLength ?? 0;
     aliceHttpRequest.body = await request.getBody();
@@ -88,9 +88,9 @@ class AliceGetConnect implements BaseInterceptor {
     aliceHttpRequest.time = DateTime.now();
     aliceHttpRequest.headers = request.headers;
 
-    String? contentType = "unknown";
-    if (request.headers.containsKey("Content-Type")) {
-      contentType = request.headers["Content-Type"];
+    String? contentType = 'unknown';
+    if (request.headers.containsKey('Content-Type')) {
+      contentType = request.headers['Content-Type'];
     }
     aliceHttpRequest.contentType = contentType;
     aliceHttpRequest.queryParameters = request.url.queryParameters;
@@ -101,7 +101,7 @@ class AliceGetConnect implements BaseInterceptor {
     _aliceCore.addCall(call);
 
     //HANDLE REQUEST TIMEOUT
-    Future.delayed(timeout).then((value) {
+    Future<dynamic>.delayed(timeout).then((value) {
       final call = _selectCall(request.id);
       //WHEN STILL WAITING FOR REQUEST
       if (call != null && call.loading) {
@@ -117,20 +117,20 @@ class AliceGetConnect implements BaseInterceptor {
   }
 
   @override
-  FutureOr responseInterceptor(Request request, Response response) {
-    var httpResponse = AliceHttpResponse();
+  FutureOr<dynamic> responseInterceptor(Request<dynamic> request, Response<dynamic> response) {
+    final httpResponse = AliceHttpResponse();
     httpResponse.status = response.statusCode ?? 0;
     if (response.body == null) {
-      httpResponse.body = "";
+      httpResponse.body = '';
       httpResponse.size = 0;
     } else {
       httpResponse.body = response.body;
       httpResponse.size = utf8.encode(response.body.toString()).length;
     }
     httpResponse.time = DateTime.now();
-    Map<String, String> headers = {};
+    final Map<String, String> headers = {};
     response.headers?.forEach((header, values) {
-      headers[header] = values.toString();
+      headers[header] = values;
     });
     httpResponse.headers = headers;
 
@@ -146,7 +146,7 @@ class AliceGetConnect implements BaseInterceptor {
   }
 }
 
-extension GetConnectRequestX on Request {
+extension GetConnectRequestX on Request<dynamic> {
   Future<String?> getBody() async {
     if (method.toLowerCase() == 'post') {
       if (contentType.contains('multipart/form-data')) {
@@ -163,16 +163,16 @@ extension GetConnectRequestX on Request {
   }
 
   String get boundary {
-    List<String> parts = contentType.split(";");
-    for (String part in parts) {
-      if (part.trim().startsWith("boundary=")) {
-        String boundary = part.trim().substring("boundary=".length);
+    final List<String> parts = contentType.split(';');
+    for (final String part in parts) {
+      if (part.trim().startsWith('boundary=')) {
+        String boundary = part.trim().substring('boundary='.length);
         boundary = boundary.trim();
         return boundary;
       }
     }
 
-    return "";
+    return '';
   }
 
   int get id {
@@ -193,7 +193,7 @@ extension GetConnectRequestX on Request {
   }
 
   Future<List<dynamic>> toListFormData() async {
-    List<dynamic> formDataList = [];
+    final List<dynamic> formDataList = [];
     if (boundary.isNotEmpty) {
       final separator = '--$boundary\r\n';
       final close = '--$boundary--\r\n';
@@ -201,7 +201,7 @@ extension GetConnectRequestX on Request {
       final clearData = data.replaceAll(close, '');
       final inputList = clearData.split(separator).toList();
 
-      for (String inputString in inputList) {
+      for (final String inputString in inputList) {
         if (inputString.contains('content-disposition: form-data')) {
           if (inputString.contains('filename')) {
             final List<String> parts =
@@ -213,13 +213,13 @@ extension GetConnectRequestX on Request {
               String fileName = '';
               String contentType = '';
 
-              final RegExp regexFn = RegExp(r'filename="([^"]+)"');
+              final RegExp regexFn = RegExp('filename="([^"]+)"');
               final Match? matchFn = regexFn.firstMatch(stringContainFileName);
               if (matchFn != null) {
                 fileName = matchFn.group(1)!;
               }
 
-              final RegExp regexCt = RegExp(r'content-type: ([^ ]+)');
+              final RegExp regexCt = RegExp('content-type: ([^ ]+)');
               final Match? matchCt =
               regexCt.firstMatch(stringContainContentType);
               if (matchCt != null) {
@@ -239,7 +239,7 @@ extension GetConnectRequestX on Request {
               final String value = parts[1];
               String name = '';
 
-              final RegExp regex = RegExp(r'name="([^"]+)"');
+              final RegExp regex = RegExp('name="([^"]+)"');
               final Match? match = regex.firstMatch(stringContainName);
               if (match != null) {
                 name = match.group(1)!;

@@ -16,21 +16,21 @@ class NetworkCore extends GetConnect {
 
   @override
   void onInit() {
-    httpClient.baseUrl = AppConstant.BASE_URL;
-    httpClient.defaultContentType = "application/json";
+    httpClient.baseUrl = AppConstant.baseUrl;
+    httpClient.defaultContentType = 'application/json';
     httpClient.timeout = alice.timeout;
     httpClient.addRequestModifier(alice.requestInterceptor);
     httpClient.addResponseModifier(alice.responseInterceptor);
     super.onInit();
   }
 
-  Future<Response?> getRequest<T>(String url,
+  Future<Response<dynamic>?> getRequest<T>(String url,
       {Map<String, String>? headers,
       Map<String, dynamic>? queryParameters,
       int cacheDays = 7,
       required T Function(dynamic) decoder,
       bool forceRefresh = true}) async {
-    Response? response;
+    Response<dynamic>? response;
     try {
       response = await get<T>(url,
           headers: headers, query: queryParameters,
@@ -43,22 +43,22 @@ class NetworkCore extends GetConnect {
     return response;
   }
 
-  Future<Response?> postRequst<T>(
+  Future<Response<dynamic>?> postRequst<T>(
     String url, {
     Map<String, String>? headers,
     Function(double)? onSendProgress,
-    body,
+    dynamic body,
     int cacheDays = 7,
     required T Function(dynamic) decoder,
     bool forceRefresh = true,
   }) async {
-    Response? response;
+    Response<dynamic>? response;
     try {
       response = await post<T>(
         url,
         body,
         headers: headers,
-        contentType: "application/json",
+        contentType: 'application/json',
         decoder: decoder,
         uploadProgress: onSendProgress,
       );
@@ -69,14 +69,14 @@ class NetworkCore extends GetConnect {
     }
   }
 
-  Future<Response?> patchRequest<T>(String url,
+  Future<Response<dynamic>?> patchRequest<T>(String url,
       {Map<String, dynamic>? headers,
       Function(double)? onSendProgress,
-      body,
+      dynamic body,
       int cacheDays = 7,
       required T Function(dynamic) decoder,
       bool forceRefresh = true}) async {
-    Response? response;
+    Response<dynamic>? response;
     try {
       response = await patch(
         url,

@@ -13,16 +13,16 @@ class RepositoryImpl implements Repository {
 
   @override
   FutureOr<UserModel?> getUser(int page) async {
-    late Response? response;
+    late Response<dynamic>? response;
     try {
-      response = await networkCore.getRequest<UserModel>("/users",
+      response = await networkCore.getRequest<UserModel>('/users',
           queryParameters: {
-            "page": page.toString()
+            'page': page.toString()
           },
-          decoder: (val) => UserModel.fromJson(val),
+          decoder: UserModel.fromJson,
           headers: {
             'Accept': 'application/json',
-            'Content-Type': "application/json"
+            'Content-Type': 'application/json'
           });
     } on Exception catch (e) {
       debugPrint(e.toString());
