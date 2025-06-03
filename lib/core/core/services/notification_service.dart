@@ -64,10 +64,6 @@ class NotificationService {
           presentSound: true,
         ),
       ),
-
-      // Type of time interpretation
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
       androidScheduleMode: AndroidScheduleMode.exact,
     );
   }

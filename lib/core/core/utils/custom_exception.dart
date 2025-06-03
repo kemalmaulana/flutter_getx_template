@@ -5,8 +5,8 @@ class CustomException implements Exception {
 
   @override
   String toString() {
-    Object? message = this.message;
-    if (message == null) return "Exception";
-    return "$message";
+    final Object? message = this.message;
+    if (message == null) return 'Exception';
+    return '$message';
   }
 }

@@ -14,12 +14,12 @@ class SplashScreen extends StatelessWidget {
           title: const Text('Test'),
         ),
         body: Obx(() => Visibility(
-          visible: controller.userModel.value.isNotEmpty,
+          visible: controller.userModel.isNotEmpty,
           replacement: const Center(child: CircularProgressIndicator.adaptive(),),
           child: ListView.builder(
-                itemCount: controller.userModel.value.length,
+                itemCount: controller.userModel.length,
                 itemBuilder: (_, index) {
-                  var item = controller.userModel.value[index];
+                  final item = controller.userModel[index];
                   return ListTile(
                     title: Text(item.email ?? 'test'),
                   );

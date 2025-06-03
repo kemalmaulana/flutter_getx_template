@@ -6,68 +6,54 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.5.1 <4.0.0'
+  sdk: '>=3.8.0 <4.0.0'
 
 dependencies:
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
+  connectivity_plus: ^6.1.4
+  dropdown_button2: ^2.3.9
+  file_picker: ^10.1.9
+  fimber: ^0.7.0
+  firebase_core: ^3.13.1
+  firebase_crashlytics: ^4.3.6
+  firebase_messaging: ^15.2.6
   flutter:
     sdk: flutter
+  flutter_alice: ^2.0.1
   flutter_easyloading: ^3.0.5
   flutter_html: any
-  flutter_staggered_animations: ^1.1.1
-  flutter_svg: ^2.0.10+1
-  flutter_launcher_icons: ^0.14.0
-  flutter_local_notifications: ^17.2.3
+  flutter_inappwebview: ^6.1.5
+  flutter_launcher_icons: ^0.14.3
+  flutter_local_notifications: ^19.2.1
+  flutter_map: ^8.1.1
+  flutter_native_splash: ^2.4.6
   flutter_rating_bar: ^4.0.1
-  flutter_map: ^7.0.2
-  flutter_native_splash: ^2.4.1
-  flutter_inappwebview: ^6.0.0
   flutter_screenutil: ^5.9.3
-  firebase_core: ^3.5.0
-  firebase_messaging: ^15.1.2
-  firebase_crashlytics: ^4.1.2
-  connectivity_plus: ^6.0.5
-  path_provider_android: ^2.2.10
-  path_provider_ios: ^2.0.11
-  carousel_slider: ^5.0.0
-  webview_flutter: ^4.9.0
-  geolocator: ^13.0.1
-  latlong2: ^0.9.1
-  maps_toolkit: ^3.0.0
-  intl: ^0.19.0
+  flutter_staggered_animations: ^1.1.1
+  flutter_svg: ^2.1.0
+  geolocator: ^14.0.1
+  get: ^4.7.2
   get_storage: ^2.1.1
-  url_launcher: ^6.3.0
-  fimber: ^0.7.0
   google_fonts: ^6.2.1
-  dropdown_button2: ^2.3.9
-  mask_text_input_formatter: ^2.9.0
-#  camera: ^0.10.5+9
-  octo_image: ^2.1.0
-  upgrader: ^11.1.0
-  path: any
-  infinite_scroll_pagination: ^4.0.0
-  permission_handler: any
-  google_mlkit_face_detection: ^0.11.1
-  percent_indicator: ^4.2.3
-  timezone: any
-  shimmer: ^3.0.0
-  file_picker: ^8.1.2
+  google_mlkit_face_detection: ^0.13.1
   image_picker: ^1.1.2
+  infinite_scroll_pagination: ^5.0.0
+  intl: ^0.20.2
+  latlong2: ^0.9.1
+  maps_toolkit: ^3.1.0
+  mask_text_input_formatter: ^2.9.0
+  octo_image: ^2.1.0
   overlay_support: ^2.1.0
-  flutter_alice: ^1.1.1
-#  syncfusion_flutter_pdfviewer: ^25.1.35
-
-  #  --- Alpha/Beta/Release Candidate Libraries ---
-  get: ^4.6.6
-#  location: ^5.0.3
-
-#  --- Unused Libraries ---
-#  package_info_plus: ^3.0.3
-#  flutter_pdfview: ^1.2.9
-#  file: ^7.0.0
-#  overlay_support: any
-#  safe_device: ^1.1.2
-#  basic_utils: ^5.5.4
-  cached_network_image: ^3.4.1
+  path:
+  path_provider_android: ^2.2.17
+  percent_indicator: ^4.2.5
+  permission_handler:
+  shimmer: ^3.0.0
+  timezone:
+  upgrader: ^11.4.0
+  url_launcher: ^6.3.1
+  webview_flutter: ^4.13.0
 
 dependency_overrides:
   flutter_alice:
@@ -75,7 +61,7 @@ dependency_overrides:
       url: https://github.com/kemalmaulana/flutter-alice.git
 
 dev_dependencies:
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
 
@@ -96,10 +82,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/
-    - assets/icons/
-    - assets/vector/
+#  assets:
+#    - assets/images/
+#    - assets/icons/
+#    - assets/vector/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

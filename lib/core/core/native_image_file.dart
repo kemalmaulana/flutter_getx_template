@@ -25,7 +25,7 @@ class CameraFile {
     ];
   }
 
-  static CameraFile decode(Object result) {
+  static Future<CameraFile> decode(Object result) async {
     result as List<Object?>;
     return CameraFile(
       filePath: result[0]! as String,

@@ -32,7 +32,7 @@ class StorageCore {
   //   }
   // }
 
-  Future deleteAuthResponse() async {
+  Future<void> deleteAuthResponse() async {
     try {
       await storage.remove('auth_result');
     } catch (e) {
@@ -68,15 +68,15 @@ class StorageCore {
 
   dynamic getObject(String key) {
     try {
-      dynamic data = storage.read(key);
+      final dynamic data = storage.read<dynamic>(key);
       return data;
     } catch (e) {
-      debugPrint("Error while load access token: $e");
+      debugPrint('Error while load access token: $e');
       rethrow;
     }
   }
 
-  Future saveObject(dynamic object, String key) async {
+  Future<void> saveObject(dynamic object, String key) async {
     try {
       await storage.write(key, object);
     } catch (e) {
@@ -85,7 +85,7 @@ class StorageCore {
     }
   }
 
-  Future removeObject(String key) async {
+  Future<void> removeObject(String key) async {
     try {
       await storage.remove(key);
     } catch (e) {

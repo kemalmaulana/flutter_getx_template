@@ -13,7 +13,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
         ensureScreenSize: true,
         child: OverlaySupport.global(
           child: GetMaterialApp(
@@ -23,7 +22,6 @@ class App extends StatelessWidget {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
                 textTheme: Typography(platform: TargetPlatform.iOS).black.apply(
-                    fontSizeFactor: 1,
                     fontFamily: GoogleFonts.poppins().fontFamily)),
             home: const SplashScreen(),
           ),

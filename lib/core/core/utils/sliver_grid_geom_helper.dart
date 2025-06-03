@@ -12,25 +12,18 @@ class SliverGridWithCustomGeometryLayout extends SliverGridRegularTileLayout {
 
   const SliverGridWithCustomGeometryLayout({
     required this.geometryBuilder,
-    required int crossAxisCount,
-    required double mainAxisStride,
-    required double crossAxisStride,
-    required double childMainAxisExtent,
-    required double childCrossAxisExtent,
-    required bool reverseCrossAxis,
-  })  : assert(crossAxisCount > 0),
-        assert(mainAxisStride >= 0),
-        assert(crossAxisStride >= 0),
-        assert(childMainAxisExtent >= 0),
-        assert(childCrossAxisExtent >= 0),
-        super(
-          crossAxisCount: crossAxisCount,
-          mainAxisStride: mainAxisStride,
-          crossAxisStride: crossAxisStride,
-          childMainAxisExtent: childMainAxisExtent,
-          childCrossAxisExtent: childCrossAxisExtent,
-          reverseCrossAxis: reverseCrossAxis,
-        );
+    required super.crossAxisCount,
+    required super.mainAxisStride,
+    required super.crossAxisStride,
+    required super.childMainAxisExtent,
+    required super.childCrossAxisExtent,
+    required super.reverseCrossAxis,
+  });
+      // : assert(crossAxisCount > 0),
+      //   assert(mainAxisStride >= 0),
+      //   assert(crossAxisStride >= 0),
+      //   assert(childMainAxisExtent >= 0),
+      //   assert(childCrossAxisExtent >= 0);
 
   @override
   SliverGridGeometry getGeometryForChildIndex(int index) {
@@ -48,35 +41,29 @@ class SliverGridDelegateWithFixedCrossAxisCountAndCentralizedLastElement
 
   SliverGridDelegateWithFixedCrossAxisCountAndCentralizedLastElement({
     required this.itemCount,
-    required int crossAxisCount,
-    double mainAxisSpacing = 0.0,
-    double crossAxisSpacing = 0.0,
-    double childAspectRatio = 1.0,
-  })  : assert(itemCount > 0),
-        assert(crossAxisCount > 0),
-        assert(mainAxisSpacing >= 0),
-        assert(crossAxisSpacing >= 0),
-        assert(childAspectRatio > 0),
-        super(
-        crossAxisCount: crossAxisCount,
-        mainAxisSpacing: mainAxisSpacing,
-        crossAxisSpacing: crossAxisSpacing,
-        childAspectRatio: childAspectRatio,
-      );
+    required super.crossAxisCount,
+    super.mainAxisSpacing,
+    super.crossAxisSpacing,
+    super.childAspectRatio,
+  })  : assert(itemCount > 0, 'itemCount must be greater than zero.');
+        // assert(crossAxisCount > 0),
+        // assert(mainAxisSpacing >= 0),
+        // assert(crossAxisSpacing >= 0),
+        // assert(childAspectRatio > 0);
 
-  bool _debugAssertIsValid() {
-    assert(crossAxisCount > 0);
-    assert(mainAxisSpacing >= 0.0);
-    assert(crossAxisSpacing >= 0.0);
-    assert(childAspectRatio > 0.0);
-    return true;
-  }
+  // bool _debugAssertIsValid() {
+  //   // assert(crossAxisCount > 0);
+  //   // assert(mainAxisSpacing >= 0.0);
+  //   // assert(crossAxisSpacing >= 0.0);
+  //   // assert(childAspectRatio > 0.0);
+  //   return true;
+  // }
 
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {
-    assert(_debugAssertIsValid());
+    // assert(_debugAssertIsValid());
     final usableCrossAxisExtent = max(
-      0.0,
+      0,
       constraints.crossAxisExtent - crossAxisSpacing * (crossAxisCount - 1),
     );
     final childCrossAxisExtent = usableCrossAxisExtent / crossAxisCount;

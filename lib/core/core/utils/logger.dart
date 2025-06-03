@@ -2,9 +2,9 @@ import 'package:fimber/fimber.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
 class Logger {
-  static logResponse(dynamic response) {
-    Fimber.i("Response: ${response.data}");
-    Fimber.i("<-- END HTTP");
+  static void logResponse(dynamic response) {
+    Fimber.i('Response: ${response.data}');
+    Fimber.i('<-- END HTTP');
   }
 
   // static logError(Request dioError) {
@@ -15,18 +15,18 @@ class Logger {
   //   Fimber.i("<-- End error");
   // }
 
-  static logRequest(Request options) {
+  static void logRequest(Request<dynamic> options) {
     Fimber.i(
         "--> ${options.method.toUpperCase()} ${"${options.url.host}${options.url.path}"}");
-    Fimber.i("Headers:");
-    Fimber.i("URL : ${options.url.origin}");
+    Fimber.i('Headers:');
+    Fimber.i('URL : ${options.url.origin}');
     options.headers.forEach((k, v) => Fimber.i('$k: $v'));
-    Fimber.i("queryParameters:");
+    Fimber.i('queryParameters:');
     options.url.queryParameters.forEach((k, v) => Fimber.i('$k: $v'));
     if (options.url.data != null) {
-      Fimber.i("Body: ${options.url.data}");
+      Fimber.i('Body: ${options.url.data}');
     }
     Fimber.i(
-        "--> END ${options.method.toUpperCase()}");
+        '--> END ${options.method.toUpperCase()}');
   }
 }

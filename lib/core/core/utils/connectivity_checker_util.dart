@@ -3,8 +3,8 @@ import 'package:fimber/fimber.dart';
 
 Future<bool> checkConnectivityState() async {
   final result = await Connectivity().checkConnectivity();
-  for (var e in result) {
-    Fimber.d("Connected to ${e.name}");
+  for (final ConnectivityResult e in result) {
+    Fimber.d('Connected to ${e.name}');
   }
   return result.isNotEmpty;
 }

@@ -46,7 +46,7 @@ class NetworkCore extends GetConnect {
   Future<Response<dynamic>?> postRequst<T>(
     String url, {
     Map<String, String>? headers,
-    Function(double)? onSendProgress,
+    void Function(double)? onSendProgress,
     dynamic body,
     int cacheDays = 7,
     required T Function(dynamic) decoder,
@@ -71,7 +71,7 @@ class NetworkCore extends GetConnect {
 
   Future<Response<dynamic>?> patchRequest<T>(String url,
       {Map<String, dynamic>? headers,
-      Function(double)? onSendProgress,
+      void Function(double)? onSendProgress,
       dynamic body,
       int cacheDays = 7,
       required T Function(dynamic) decoder,

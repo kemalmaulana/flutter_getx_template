@@ -49,7 +49,7 @@ class AgeCalculator {
     required DateTime toDate,
   }) {
     // Check if toDate to be included in the calculation
-    DateTime endDate = toDate;
+    final DateTime endDate = toDate;
 
     int years = endDate.year - fromDate.year;
     int months = 0;
@@ -57,7 +57,7 @@ class AgeCalculator {
 
     if (fromDate.month > endDate.month) {
       years--;
-      months = (DateTime.monthsPerYear + endDate.month - fromDate.month);
+      months = DateTime.monthsPerYear + endDate.month - fromDate.month;
 
       if (fromDate.day > endDate.day) {
         months--;
@@ -80,11 +80,11 @@ class AgeCalculator {
         days = endDate.day - fromDate.day;
       }
     } else {
-      months = (endDate.month - fromDate.month);
+      months = endDate.month - fromDate.month;
 
       if (fromDate.day > endDate.day) {
         months--;
-        days = daysInMonth(fromDate.year + years, (fromDate.month + months)) +
+        days = daysInMonth(fromDate.year + years, fromDate.month + months) +
             endDate.day -
             fromDate.day;
       } else {
@@ -99,12 +99,12 @@ class AgeCalculator {
   static DateTime add(
       {required DateTime date, required DateDuration duration}) {
     int years = date.year + duration.years;
-    years += ((date.month + duration.months) ~/ DateTime.monthsPerYear);
-    int months = ((date.month + duration.months) % DateTime.monthsPerYear);
+    years += (date.month + duration.months) ~/ DateTime.monthsPerYear;
+    final int months = (date.month + duration.months) % DateTime.monthsPerYear;
 
-    int days = date.day + duration.days - 1;
+    final int days = date.day + duration.days - 1;
 
-    return DateTime(years, months, 1).add(Duration(days: days));
+    return DateTime(years, months).add(Duration(days: days));
   }
 
   static DateDuration age(DateTime birthdate, {DateTime? today}) {
@@ -113,9 +113,9 @@ class AgeCalculator {
 
   static DateDuration timeToNextBirthday(DateTime birthdate,
       {DateTime? fromDate}) {
-    DateTime endDate = fromDate ?? DateTime.now();
-    DateTime tempDate = DateTime(endDate.year, birthdate.month, birthdate.day);
-    DateTime nextBirthdayDate = tempDate.isBefore(endDate)
+    final DateTime endDate = fromDate ?? DateTime.now();
+    final DateTime tempDate = DateTime(endDate.year, birthdate.month, birthdate.day);
+    final DateTime nextBirthdayDate = tempDate.isBefore(endDate)
         ? AgeCalculator.add(date: tempDate, duration: DateDuration(years: 1))
         : tempDate;
     return dateDifference(fromDate: endDate, toDate: nextBirthdayDate);
