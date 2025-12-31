@@ -6,39 +6,39 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.8.0 <4.0.0'
+  sdk: '>=3.10.4 <4.0.0'
 
 dependencies:
   cached_network_image: ^3.4.1
-  carousel_slider: ^5.0.0
-  connectivity_plus: ^6.1.4
+  carousel_slider: ^5.1.1
+  connectivity_plus: ^7.0.0
   dropdown_button2: ^2.3.9
-  file_picker: ^10.1.9
+  file_picker: ^10.3.8
   fimber: ^0.7.0
-  firebase_core: ^3.13.1
-  firebase_crashlytics: ^4.3.6
-  firebase_messaging: ^15.2.6
+  firebase_core: ^4.3.0
+  firebase_crashlytics: ^5.0.6
+  firebase_messaging: ^16.1.0
   flutter:
     sdk: flutter
   flutter_alice: ^2.0.1
   flutter_easyloading: ^3.0.5
   flutter_html: any
   flutter_inappwebview: ^6.1.5
-  flutter_launcher_icons: ^0.14.3
-  flutter_local_notifications: ^19.2.1
-  flutter_map: ^8.1.1
-  flutter_native_splash: ^2.4.6
+  flutter_launcher_icons: ^0.14.4
+  flutter_local_notifications: ^19.5.0
+  flutter_map: ^8.2.2
+  flutter_native_splash: ^2.4.7
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.3
   flutter_staggered_animations: ^1.1.1
-  flutter_svg: ^2.1.0
-  geolocator: ^14.0.1
-  get: ^4.7.2
+  flutter_svg: ^2.2.3
+  geolocator: ^14.0.2
+  get: ^4.7.3
   get_storage: ^2.1.1
-  google_fonts: ^6.2.1
+  google_fonts: ^6.3.3
   google_mlkit_face_detection: ^0.13.1
-  image_picker: ^1.1.2
-  infinite_scroll_pagination: ^5.0.0
+  image_picker: ^1.2.1
+  infinite_scroll_pagination: ^5.1.1
   intl: ^0.20.2
   latlong2: ^0.9.1
   maps_toolkit: ^3.1.0
@@ -46,19 +46,19 @@ dependencies:
   octo_image: ^2.1.0
   overlay_support: ^2.1.0
   path:
-  path_provider_android: ^2.2.17
+  path_provider_android: ^2.2.22
   percent_indicator: ^4.2.5
   permission_handler:
   shimmer: ^3.0.0
   timezone:
-  upgrader: ^11.4.0
-  url_launcher: ^6.3.1
+  upgrader: ^12.3.0
+  url_launcher: ^6.3.2
   webview_flutter: ^4.13.0
 
-dependency_overrides:
-  flutter_alice:
-    git:
-      url: https://github.com/kemalmaulana/flutter-alice.git
+#dependency_overrides:
+#  flutter_alice:
+#    git:
+#      url: https://github.com/kemalmaulana/flutter-alice.git
 
 dev_dependencies:
   flutter_lints: ^6.0.0
